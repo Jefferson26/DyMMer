@@ -34,7 +34,10 @@ import br.ufc.lps.model.normal.SplotModel;
 import br.ufc.lps.model.xml.ModelID;
 import br.ufc.lps.model.xml.XMLFamiliarModel;
 import br.ufc.lps.model.xml.XMLSplotModel;
+import br.ufc.lps.repository.FeatureModel;
+import br.ufc.lps.repository.jpa.FeatureModelImp;
 import br.ufc.lps.splar.core.fm.FeatureModelException;
+import br.ufc.lps.util.JDBCConnection;
 
 public class Main extends JFrame {
 
@@ -44,11 +47,14 @@ public class Main extends JFrame {
 	private ViewerPanel currentViewer;
 	private JMenu mnMeasures_1;
 	
-	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		JDBCConnection.connectionQuery();
+		FeatureModel fea = new FeatureModelImp();
+		fea.getFeatureModelById(1);
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
